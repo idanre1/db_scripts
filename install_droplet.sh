@@ -57,6 +57,10 @@ echo "*** Updating OS first"
 apt-yes update
 apt-yes upgrade
 apt-yes dist-upgrade
+sudo apt autoremove
+
+# Remove gui
+sudo systemctl set-default multi-user.target
 
 # install apps
 git clone https://github.com/idanre1/settings.git
@@ -70,7 +74,7 @@ sudo ln -s /home/$USER /home/idan
 sudo timedatectl set-timezone Asia/Jerusalem
 
 # easy linux
-$aptyes install source-highlight curl libsnappy-dev
+aptyes install source-highlight curl libsnappy-dev
 echo source ~/settings/bashrc >> ~/.bashrc
 echo source ~/settings/vimrc >> ~/.vimrc
 sudo sh -c "echo 'set background=dark' >> /root/.vimrc"
@@ -79,7 +83,7 @@ sudo sh -c "echo 'set background=dark' >> /root/.vimrc"
 # Python3
 # -----------------------------------------
 mkdir -p ~/Envs
-$aptyes install python3 python3-pip python3-tk virtualenv
+aptyes install python3 python3-pip python3-tk virtualenv
 # virtualenv -p /usr/bin/python3 --no-site-packages ~/py3env
 virtualenv -p /usr/bin/python3 ~/Envs/py3env
 
