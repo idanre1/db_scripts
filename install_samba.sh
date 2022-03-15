@@ -5,6 +5,7 @@
 # Setup
 # -----
 SMUSER=datadrive
+SMGRP=linaro
 HOSTN=`cat /etc/hostname`
 
 # Install samba
@@ -14,6 +15,7 @@ apt-yes install samba
 # add unix user for samba
 echo "*** Adding unix user for samba"
 sudo adduser --no-create-home --disabled-password --disabled-login $SMUSER
+sudo usermod -g $SMGRP $SMUSER
 
 echo "*** Adding password for samba use"
 sudo smbpasswd -a $SMUSER
