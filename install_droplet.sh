@@ -33,11 +33,11 @@
 if [ "$1" = "init" ]; then
         # mount sdcard
         echo "*** tweak system"
-	sudo mkdir -p /media/linaro/sdcard
-        sudo sh -c 'echo /dev/mmcblk1p1 /media/linaro/sdcard ext4 rw 0 2 >> /etc/fstab'
+	sudo mkdir -p /datadrive
+        sudo sh -c 'echo /dev/mmcblk1p1 /datadrive ext4 >> /etc/fstab'
 	sudo mount -a
-	sudo chown linaro:linaro -R /media/linaro/sdcard
-        sudo ln -fs /media/linaro/sdcard /datadrive
+	sudo chown linaro:linaro /datadrive
+	sudo chmod 770 /datadrive
         sudo ln -fs /home/linaro /nas
 
 	# setup password
