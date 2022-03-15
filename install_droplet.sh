@@ -2,15 +2,20 @@
 ###############################################################
 # Installation notes for dragon board
 # Known working on linaro release: 21.12
-#
 # Prequisities:
-# delete using partition tool sdcard
-# search partition in windows
-# create a new exfat with quick format
-#
-# Handle partitions
-# sudo fdisk [-l for view]
-# Format the sdcard:
+# 1.
+# SSH keys to github
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !!! put ssh credentials to github !!!!!
+# git clone git@github.com:idanre1/db_scripts.git
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# 2.
+# Handle sdcard partitions:
+# sudo fdisk -l
+# https://phoenixnap.com/kb/delete-partition-linux
+# sudo fdisk
+# 3.
+# Format the sdcard to ext4:
 # sudo mkfs.ext4 /dev/mmcblk1p1
 # sudo mount -t ext4 -o rw /dev/mmcblk1p1 /media/linaro/sdcard
 #### INFO ####
@@ -26,7 +31,7 @@
 # Memory card is with exfat:
 # Need to apt-get pkt else no root login will happen on boot
 if [ "$1" = "init" ]; then
-        # tweak system
+        # mount sdcard
         echo "*** tweak system"
 	sudo mkdir -p /media/linaro/sdcard
         sudo sh -c 'echo /dev/mmcblk1p1 /media/linaro/sdcard ext4 rw 0 2 >> /etc/fstab'
@@ -34,22 +39,24 @@ if [ "$1" = "init" ]; then
 	sudo chown linaro:linaro -R /media/linaro/sdcard
         sudo ln -fs /media/linaro/sdcard /datadrive
         sudo ln -fs /home/linaro /nas
-        exit
+
+	# setup password
+	echo "*** Please change password"
+	passwd
+	# setup hostname in both places
+	# https://askubuntu.com/questions/59458/error-message-sudo-unable-to-resolve-host-none
+	echo "*** Please enter hostname: g.e. iot_hub, pegion"
+	read HOSTREAD
+	sudo sh -c "echo $HOSTREAD > /etc/hostname"
+	sudo perl -pe "s/127.0.1.1.*/127.0.1.1       $HOSTREAD/" /etc/hosts > /etc/hosts.bak
+	sudo mv -f /etc/hosts.bak /etc/hosts
+	sudo hostname $HOSTREAD
 fi
 ###############################################################
-# Second stage (after reboot)
+# Second stage (no reboot required, but it suggested to do so)
 alias apt-yes='sudo DEBIAN_FRONTEND=noninteractive apt-get -y '
 
 
-########### Manual steps ###########
-echo "*** Please change password"
-passwd
-echo "*** Please enter hostname: g.e. iot_hub, pegion"
-read HOSTREAD
-sudo sh -c "echo $HOSTREAD > /etc/hostname"
-sudo perl -pe "s/127.0.1.1.*/127.0.1.1       $HOSTREAD/" /etc/hosts > /etc/hosts.bak
-sudo mv /etc/hosts.bak /etc/hosts
-sudo hostname $HOSTREAD
 #mv -f /nas/settings/smb.conf /nas/settings/smb.conf.bak
 #sudo perl -pe "s/netbios name = .*/netbios name = $HOSTREAD/" /nas/settings/smb.conf.bak > /nas/settings/smb.conf 
 
