@@ -6,7 +6,7 @@
 # 1.
 # SSH keys to github
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# !!! put ssh credentials to github !!!!!
+# !!!!!   put ssh credentials to github     !!!!!
 # git clone git@github.com:idanre1/db_scripts.git
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # 2.
@@ -55,10 +55,6 @@ fi
 ###############################################################
 # Second stage (no reboot required, but it suggested to do so)
 alias apt-yes='sudo DEBIAN_FRONTEND=noninteractive apt-get -y '
-
-
-#mv -f /nas/settings/smb.conf /nas/settings/smb.conf.bak
-#sudo perl -pe "s/netbios name = .*/netbios name = $HOSTREAD/" /nas/settings/smb.conf.bak > /nas/settings/smb.conf 
 
 ########### script #################
 
