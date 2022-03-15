@@ -47,6 +47,9 @@ passwd
 echo "*** Please enter hostname: g.e. iot_hub, pegion"
 read HOSTREAD
 sudo sh -c "echo $HOSTREAD > /etc/hostname"
+sudo perl -pe "s/127.0.1.1.*/127.0.1.1       $HOSTREAD/" /etc/hosts > /etc/hosts.bak
+sudo mv /etc/hosts.bak /etc/hosts
+sudo hostname $HOSTREAD
 #mv -f /nas/settings/smb.conf /nas/settings/smb.conf.bak
 #sudo perl -pe "s/netbios name = .*/netbios name = $HOSTREAD/" /nas/settings/smb.conf.bak > /nas/settings/smb.conf 
 
