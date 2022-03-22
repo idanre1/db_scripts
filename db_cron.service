@@ -1,0 +1,8 @@
+[Unit]
+Description=Cron jobs db410c
+#After=network.target multi-user.target
+
+[Service]
+Type=simple
+#User=linaro
+ExecStart=/nas/db_scripts/db_cron.sh
