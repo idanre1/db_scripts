@@ -86,6 +86,14 @@ echo source ~/settings/vimrc >> ~/.vimrc
 sudo sh -c "echo 'set background=dark' >> /root/.vimrc"
 
 # -----------------------------------------
+# systemd
+# -----------------------------------------
+sudo cp /nas/db_scripts/db_cron.service /etc/systemd/system/
+sudo cp /nas/db_scripts/db_cron.timer /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable db_cron.timer
+
+# -----------------------------------------
 # Python3
 # -----------------------------------------
 mkdir -p ~/Envs
