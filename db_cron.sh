@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo /nas/db_scripts/bt_led/exe_bt_led
+
 #DATE=`/bin/date`
 #OK_MIDNIGHT=`/nas/iot/time_window -golden "midnight" `
 #OK_NOON=`/nas/iot/time_window -golden "noon" `
