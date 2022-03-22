@@ -1,5 +1,6 @@
 # openwrt
 ## dnsmasq
+https://github.com/imp/dnsmasq/blob/master/dnsmasq.conf.example  
 Inside `/etc/dnsmasq.conf`
 ```
 # tuya to NXDOMAIN
