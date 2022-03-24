@@ -12,7 +12,6 @@ sudo -u homeassistant -H -s
 cd /srv/homeassistant
 virtualenv -p /usr/bin/python3 .
 source bin/activate
-python -m pip install wheel
 pip install homeassistant
 hass
 
