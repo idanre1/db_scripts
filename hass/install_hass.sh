@@ -21,8 +21,11 @@ sudo systemctl enable hass.service
 sudo systemctl start hass.service
 
 sleep 120
-cd /home/homeassistant/.homeassistant
-wget -O - https://raw.githubusercontent.com/hacs/get/main/get | sudo -u homeassistant bash
+#cd /home/homeassistant/.homeassistant
+#wget -O - https://raw.githubusercontent.com/hacs/get/main/get | sudo -u homeassistant bash
+cd /tmp
+sudo -u homeassistant git clone https://github.com/make-all/tuya-local.git
+sudo -u homeassistant mv tuya-local/custom_components /home/homeassistant/.homeassistant/
 
 sleep 360
 sudo systemctl restart hass.service
