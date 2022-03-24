@@ -13,5 +13,12 @@ cd /srv/homeassistant
 virtualenv -p /usr/bin/python3 .
 source bin/activate
 pip install homeassistant
-hass
 
+cp hass.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable hass.service
+
+echo "*** First init"
+hass
+echo "*** First init done"
+echo "sudo systemctl start hass.service"
