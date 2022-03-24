@@ -20,5 +20,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable hass.service
 sudo systemctl start hass.service
 
+sleep 120
 cd /home/homeassistant/.homeassistant
 wget -O - https://raw.githubusercontent.com/hacs/get/main/get | sudo -u homeassistant bash
+
+sleep 360
+sudo systemctl restart hass.service
