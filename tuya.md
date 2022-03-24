@@ -1,6 +1,7 @@
 # openwrt installation
 https://openwrt.org/docs/guide-user/network/wifi/dumbap  
 https://openwrt.org/docs/guide-user/firewall/fw3_configurations/bridge  
+https://openwrt.org/docs/guide-user/firewall/fw3_configurations/dns_ipset  
 ## Interfaces
 Only 1: lan (bridge eth.0 and wlan0)  
 Basicaly assign static IP to AP out of master router DHCP range  
