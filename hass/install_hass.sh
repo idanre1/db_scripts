@@ -1,4 +1,5 @@
 #!/bin/sh
+#https://www.home-assistant.io/installation/raspberrypi
 alias apt-yes='sudo DEBIAN_FRONTEND=noninteractive apt-get -y '
 apt-yes update
 apt-yes upgrade
@@ -14,11 +15,7 @@ virtualenv -p /usr/bin/python3 .
 source bin/activate
 pip install homeassistant
 
-cp hass.service /etc/systemd/system/
+sudo cp hass.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable hass.service
-
-echo "*** First init"
-hass
-echo "*** First init done"
-echo "sudo systemctl start hass.service"
+sudo systemctl start hass.service
