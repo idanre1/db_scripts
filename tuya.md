@@ -5,7 +5,8 @@ https://openwrt.org/docs/guide-user/firewall/fw3_configurations/dns_ipset
 ## Interfaces
 Only 1: lan (bridge eth.0 and wlan0)  
 Basicaly assign static IP to AP out of master router DHCP range  
-Assign default gateway to master router  
+Assign default gateway to master router 
+Assign DNS server as master router
 Disable dnsmasq and odhcpd from startup
 ## Installations
 1. bridge filter
