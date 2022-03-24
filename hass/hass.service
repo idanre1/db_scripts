@@ -6,4 +6,8 @@ After=network.target
 Type=simple
 User=homeassistant
 ExecStart=/srv/homeassistant/bin/hass
-Restart=on-failure
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+
