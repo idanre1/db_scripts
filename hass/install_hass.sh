@@ -19,3 +19,6 @@ sudo cp hass.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable hass.service
 sudo systemctl start hass.service
+
+cd /home/homeassistant/.homeassistant
+wget -O - https://raw.githubusercontent.com/hacs/get/main/get | sudo -u homeassistant bash
