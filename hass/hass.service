@@ -6,4 +6,4 @@ After=network.target
 Type=simple
 User=homeassistant
 ExecStart=/srv/homeassistant/bin/hass
-Restart=on-abnormal
+Restart=on-failure
